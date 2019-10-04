@@ -1,10 +1,10 @@
-import ReactDOM from "react-dom";
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from "@src/App";
+import App from '@src/App';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(
 	<BrowserRouter>
