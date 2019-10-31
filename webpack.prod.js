@@ -1,14 +1,14 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	mode: "production",
+  mode: 'production',
 
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin({
-			filename: "index.html",
-			template: "public/index.html"
-		})
-	]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'public/index.html'
+    })
+  ]
 };
