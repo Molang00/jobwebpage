@@ -1,0 +1,78 @@
+@import '../../color.scss';
+@import '../../media.scss';
+
+.Main {
+  @include pc() {
+    // display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    .SideNavArea {
+      float: right;
+      // flex: 0 0 330px;
+      width: 20%;
+      margin: 0 5% 0 2%;
+    }
+
+    .ContentArea {
+      display: inline-block;
+      margin-left: 5%;
+      width: 65%;
+      // min-height: 700px;
+      // margin-right: 390px;
+    }
+  }
+  @include mobile() {
+    .SideNavArea {
+      display: none;
+    }
+    .ContentArea {
+      text-align: center;
+      min-height: 300px;
+
+      @include mobile() {
+        h1 {
+          font-size: 1.5em;
+        }
+        h2 {
+          font-size: 1.25em;
+        }
+      }
+    }
+  }
+}
+
+.MainWithOutSideNav {
+  > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+    > div {
+      width: 100%;
+      padding: 0;
+      margin: 5px 0;
+    }
+  }
+
+  @include pc() {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px !important;
+    margin-bottom: 40px !important;
+    flex-grow: 8;
+    margin: 0 5%;
+  }
+  @include mobile() {
+    text-align: center;
+    // width: 100%;
+    min-height: 300px;
+
+    @include mobile() {
+      h1 {
+        font-size: 1.5em;
+      }
+      h2 {
+        font-size: 1.25em;
+      }
+    }
+  }
+}

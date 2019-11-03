@@ -1,8 +1,7 @@
 import React from 'react';
-import * as styles from '@src/styles/layout/Footer.scss';
-const image = require('../../../images/cdc_logo.png');
+import styles from '../../../styles/components/Layout/Footer.module.scss';
 
-const Footer: React.SFC = () => (
+const Footer: React.FC = () => (
   <React.Fragment>
     <footer className={styles.Footer}>
       <div className={styles.Top}>
@@ -15,7 +14,7 @@ const Footer: React.SFC = () => (
       </div>
       <div className={styles.Bottom}>
         <div className={styles.Logo}>
-          <img src={image} />
+          <img src={require('../../../images/cdc_logo.png')} />
         </div>
         <div className={styles.TextBox}>
           <div className={styles.Contact}>

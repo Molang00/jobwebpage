@@ -8,7 +8,7 @@ import TopNav from './TopNav';
 import MobileTopNav from './MobileTopNav';
 import BottomNav from './BottomNav';
 
-import styles from '../../../styles/layout/Header.scss';
+import styles from '../../../styles/components/Layout/Header.module.scss';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);

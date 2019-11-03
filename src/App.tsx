@@ -3,10 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import loadable from '@loadable/component';
 
-const Header = loadable(() => import(/* webpackChunkName: "Header" */ '@src/components/layout/Header'));
-const Footer = loadable(() => import(/* webpackChunkName: "Footer" */ '@src/components/layout/Footer'));
-const Home = loadable(() => import(/* webpackChunkName: "Home" */ '@src/pages'));
-const Support = loadable(() => import(/* webpackChunkName: "Support" */ '@src/pages/Support'));
+const Header = loadable(() => import(/* webpackChunkName: "Header" */ './components/layout/Header'));
+const Footer = loadable(() => import(/* webpackChunkName: "Footer" */ './components/layout/Footer'));
+const Home = loadable(() => import(/* webpackChunkName: "Home" */ './pages'));
+const Support = loadable(() => import(/* webpackChunkName: "Support" */ './pages/Support'));
 
 const App = () => {
   return (
