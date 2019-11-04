@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import loadable from '@loadable/component';
+import Routes from './Routes';
 
 const Header = loadable(() => import(/* webpackChunkName: "Header" */ './components/layout/Header'));
 const Footer = loadable(() => import(/* webpackChunkName: "Footer" */ './components/layout/Footer'));
 const Home = loadable(() => import(/* webpackChunkName: "Home" */ './pages'));
-const Support = loadable(() => import(/* webpackChunkName: "Support" */ './pages/Support'));
 
 const App = () => {
   return (
@@ -15,10 +15,7 @@ const App = () => {
         <title>{`취업 및 진로지원센터`}</title>
       </Helmet>
       <Route path="/" render={() => <Header />} />
-      <Switch>
-        <Route exact path="/" render={() => <Home />} />
-        <Route path="/support" render={() => <Support />} />
-      </Switch>
+      <Routes />
       <Footer />
     </div>
   );
