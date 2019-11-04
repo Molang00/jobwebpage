@@ -6,7 +6,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 import { className } from '../../../styles/styleUtil';
 
-import styles from '../../../styles/layout/Header.scss';
+import styles from '../../../styles/components/Layout/Header.module.scss';
 
 interface Props {
   isLogin: boolean;

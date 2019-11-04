@@ -7,7 +7,7 @@ import { MainMenu } from '../../../store/modules/mainMenu';
 import { SubMenuItem, SubMenu, menuList } from '../../../store/modules/subMenu';
 import { className } from '../../../styles/styleUtil';
 
-import styles from '../../../styles/layout/Header.scss';
+import styles from '../../../styles/components/Layout/Header.module.scss';
 
 interface Props {
   mobileMenuOpen: boolean;

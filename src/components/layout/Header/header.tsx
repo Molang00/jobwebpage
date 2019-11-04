@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import * as styles from '@src/styles/layout/Header.scss';
+import styles from '../../../styles/components/Layout/Header.module.scss';
 import { faEllipsisV, faAngleUp, faAngleDown, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { className } from '@src/styles/styleUtil';
-import * as subMenu from '@src/store/modules/subMenu';
-import { MainMenu } from '@src/store/modules/mainMenu';
+import { className } from '../../../styles/styleUtil';
+import * as subMenu from '../../../store/modules/subMenu';
+import { MainMenu } from '../../../store/modules/mainMenu';
 
 export interface StateToProps {
   activeMainMenu: MainMenu;

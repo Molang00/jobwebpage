@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-import styles from '../../../styles/layout/Header.scss';
+import styles from '../../../styles/components/Layout/Header.module.scss';
 
 interface Props {
   isLogin: boolean;
