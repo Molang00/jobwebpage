@@ -14,7 +14,7 @@ const Footer: React.FC = () => (
       </div>
       <div className={styles.Bottom}>
         <div className={styles.Logo}>
-          <img src={require('../../../images/cdc_logo.png')} />
+          <img src={require('../../../images/cdc_logo.png')} alt="cdc_logo" />
         </div>
         <div className={styles.TextBox}>
           <div className={styles.Contact}>

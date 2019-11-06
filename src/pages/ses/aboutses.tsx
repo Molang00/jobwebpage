@@ -21,7 +21,7 @@ const AboutSesPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <img src={ses1Img} />
+            <img src={ses1Img} alt="ses1Img" />
             <p>
               미래사회가 필요로 하는 산업과 연구현장에 대한 경험, 복합적 문제해결 역량과 창의성을 지닌 글로벌 리더를
               양성하기 위해서는 학교의 이론적 지식과 연구참여만으로는 한계가 있습니다.
@@ -35,7 +35,7 @@ const AboutSesPage: React.FC = () => {
               체득하고, 커뮤니케이션과 매니지먼트 스킬을 익히고, 사회를 보는 시야를 확장하며, 미래 발전에 필요한
               네트워크를 구축함으로써 글로벌 리더로 성장할 수 있습니다.
             </p>
-            <img src={ses2Img} />
+            <img src={ses2Img} alt="ses2Img" />
           </div>
         </div>
       </React.Fragment>
