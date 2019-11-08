@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { useDispatch } from 'react-redux';
 import { mainMenuActions, MainMenu } from '../store/modules/mainMenu';
-import { subMenuActions, JobInfo, Course, SES, SubMenu } from '../store/modules/subMenu';
+import { subMenuActions, JobInfo, Course, GetJob, SES, SubMenu } from '../store/modules/subMenu';
 
 const Home = loadable(() => import(/* webpackChunkName: "Home" */ '../pages'));
 const GreetingPage = loadable(() => import(/* webpackChunkName: "GreetingPage" */ '../pages/jobInfo/greetings'));
@@ -14,7 +14,11 @@ const RolePage = loadable(() => import(/* webpackChunkName: "RolePage" */ '../pa
 const PlanningPage = loadable(() => import(/* webpackChunkName: "PlanningPage" */ '../pages/course/planning'));
 const KcesaPage = loadable(() => import(/* webpackChunkName: "KcesaPage" */ '../pages/course/kcesa'));
 const CounselingPage = loadable(() => import(/* webpackChunkName: "CounselingPage" */ '../pages/course/counseling'));
+const ExpoPage = loadable(() => import(/* webpackChunkName: "ExpoPage" */ '../pages/getJob/expo'));
+const InternshipPage = loadable(() => import(/* webpackChunkName: "InternshipPage" */ '../pages/getJob/internship'));
+const GuidePage = loadable(() => import(/* webpackChunkName: "GuidePage" */ '../pages/getJob/guide'));
 const AboutSesPage = loadable(() => import(/* webpackChunkName: "AboutSesPage" */ '../pages/ses/aboutses'));
+const SesResultsPage = loadable(() => import(/* webpackChunkName: "SesResultsPage" */ '../pages/ses/sesresults'));
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -70,6 +74,34 @@ const Routes = () => {
         render={() => {
           setMenu(MainMenu.COURSE, Course.COUNSELING);
           return <CounselingPage />;
+        }}
+      />
+      <Route
+        path="/getjob/expo"
+        render={() => {
+          setMenu(MainMenu.GETJOB, GetJob.EXPO);
+          return <ExpoPage />;
+        }}
+      />
+      <Route
+        path="/getjob/internship"
+        render={() => {
+          setMenu(MainMenu.GETJOB, GetJob.INTERNSHIP);
+          return <InternshipPage />;
+        }}
+      />
+      <Route
+        path="/getjob/guide"
+        render={() => {
+          setMenu(MainMenu.GETJOB, GetJob.GUIDE);
+          return <GuidePage />;
+        }}
+      />
+      <Route
+        path="/ses/sesresults"
+        render={() => {
+          setMenu(MainMenu.SES, SES.ABOUTSES);
+          return <SesResultsPage />;
         }}
       />
       <Route
