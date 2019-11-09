@@ -22,6 +22,9 @@ const InternshipPage: React.FC = () => {
           </div>
           <div className={commonStyles.TableBox}>
             <table>
+              <colgroup>
+                <col style={{ width: '120px' }} />
+              </colgroup>
               <tbody>
                 <tr>
                   <th rowSpan={2}>프로그램</th>

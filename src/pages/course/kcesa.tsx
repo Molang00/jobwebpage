@@ -23,7 +23,9 @@ const KcesaPage: React.FC = () => {
             </p>
             <img src={kcesaImg} alt="kcesaImg" />
             <p>핵심역량진단은 대학에 사전 신청하여 진단 대상자로 등록되어야만 이용할 수 있습니다.</p>
-            <a href="https://www.kcesa.re.kr/index.do">⇒ 관련 사이트 바로가기 클릭</a>
+            <p>
+              ⇒ <a href="https://www.kcesa.re.kr/index.do">관련 사이트 바로가기 클릭</a>
+            </p>
           </div>
         </div>
       </React.Fragment>
