@@ -1,5 +1,9 @@
+import { string } from 'prop-types';
+
 export const PageHeader: string;
 export const HeaderBox: string;
+export const ImageContainer: string;
+export const TextImageContainer: string;
 export const ImageBox: string;
 export const TextBox: string;
 export const TableBox: string;

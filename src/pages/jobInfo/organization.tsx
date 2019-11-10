@@ -9,14 +9,26 @@ const GreetingPage: React.FC = () => {
       <React.Fragment>
         <div className="p-col-12 p-lg-6">
           <div className={commonStyles.TextBox}>
-            <h2> 설립목적 </h2>
-            <li>전담조직을 통한 학생의 진로, 취업, 창업에 대한 토탈 지원체계 필요</li>
-            <li>양질의 다양한 프로그램 개발 및 지원</li>
-            <li>재학생이 대부분 경험하는 전교적 인턴십 프로그램 운영</li>
+            <ul>
+              <li>
+                <h2> 설립목적 </h2>
+              </li>
+              <ul>
+                <li>전담조직을 통한 학생의 진로, 취업, 창업에 대한 토탈 지원체계 필요</li>
+                <li>양질의 다양한 프로그램 개발 및 지원</li>
+                <li>재학생이 대부분 경험하는 전교적 인턴십 프로그램 운영</li>
+              </ul>
+            </ul>
           </div>
-          <img src={organizationImg} alt="organizationImg" />
+          <div className={commonStyles.ImageContainer}>
+            <img src={organizationImg} alt="organizationImg" className={commonStyles.ImageBox} />
+          </div>
           <div className={commonStyles.TextBox}>
-            <h2> 취업 및 진로 부문 업무분담 </h2>
+            <ul>
+              <li>
+                <h2> 취업 및 진로 부문 업무분담 </h2>
+              </li>
+            </ul>
           </div>
           <div className={commonStyles.TableBox}>
             <table>
@@ -60,7 +72,11 @@ const GreetingPage: React.FC = () => {
             </table>
           </div>
           <div className={commonStyles.TextBox}>
-            <h2> 창업부문 업무분담 </h2>
+            <ul>
+              <li>
+                <h2> 창업부문 업무분담 </h2>
+              </li>
+            </ul>
           </div>
           <div className={commonStyles.TableBox}>
             <table>
