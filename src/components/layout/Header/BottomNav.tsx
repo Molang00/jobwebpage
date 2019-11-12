@@ -61,11 +61,7 @@ const BottomNav: React.FC<Props> = ({
   return (
     <nav className={styles.BottomNav}>
       <Link to="/" className={styles.Logo}>
-        <span>
-          취업 및 진로
-          <br />
-          지원센터
-        </span>
+        <span>취업 및 진로지원센터</span>
       </Link>
       <a className={styles.MobileMenuButton} onClick={toggleMobileMenu}>
         <FontAwesomeIcon icon={faBars} /> MENU
