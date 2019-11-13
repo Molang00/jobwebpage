@@ -1,22 +1,29 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../../../store/store';
 import Content from './Content';
-import styles from '../../../styles/components/Layout/Main/Content.module.scss';
-import mainStyle from '../../../styles/components/Layout/Main.module.scss';
+import styles from '../../../styles/components/Layout/Main.module.scss';
+import SideNav from './SideNav';
+import { MainMenu } from '../../../store/modules/mainMenu';
+import { SubMenu, SubMenuItem, menuList } from '../../../store/modules/subMenu';
 
 interface Props {
   children: JSX.Element;
   title: string;
 }
 
-const Main: React.SFC<Props> = ({ children, title }) => {
+const Main: React.SFC<Props> = ({ children }) => {
+  const { mainMenu, subMenu } = useSelector((state: RootState) => state);
+
   return (
     <React.Fragment>
-      <title>{title}</title>
-      <div className={mainStyle.Main}>
-        <div className={styles.ContentHeader}>
-          <div className={styles.Content}>
-            <Content>{children}</Content>
-          </div>
+      <div className={styles.Main}>
+        <div className={styles.ContentArea}>
+          <Content>{children}</Content>
+        </div>
+        <div className={styles.SideNavArea}>
+          <SideNav activeMainMenu={mainMenu.activeMainMenu} activeSubMenu={subMenu.activeSubMenu} />
         </div>
       </div>
     </React.Fragment>

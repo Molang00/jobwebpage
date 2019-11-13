@@ -6,7 +6,7 @@ import ses2Img from '../../images/ses2.png';
 
 const AboutSesPage: React.FC = () => {
   return (
-    <Main title={'당신의 미래를 SES로 준비하세요!'}>
+    <Main title={'SES 소개'}>
       <React.Fragment>
         <div className="p-col-12 p-lg-6">
           <div className={commonStyles.TextBox}>
