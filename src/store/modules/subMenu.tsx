@@ -117,7 +117,7 @@ export enum Course {
 export enum GetJob {
   EXPO = 20,
   INTERNSHIP,
-  GUID
+  GUIDE
 }
 
 export enum SES {
