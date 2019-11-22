@@ -3,7 +3,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { useDispatch } from 'react-redux';
 import { mainMenuActions, MainMenu } from '../store/modules/mainMenu';
-import { subMenuActions, JobInfo, Course, GetJob, SES, SubMenu } from '../store/modules/subMenu';
+import { subMenuActions, JobInfo, Course, GetJob, SES, SubMenu, Default } from '../store/modules/subMenu';
+
+const PopupPage = loadable(() => import(/* webpackChunkName: "PopupPage" */ '../pages/popup'));
+const LoginPage = loadable(() => import(/* webpackChunkName: "LoginPage" */ '../pages/login'));
 
 const Home = loadable(() => import(/* webpackChunkName: "Home" */ '../pages'));
 const GreetingPage = loadable(() => import(/* webpackChunkName: "GreetingPage" */ '../pages/jobInfo/greetings'));
@@ -31,9 +34,22 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" render={() => <Home />} />
-      <Route exact path="/">
+      <Route
+        path="/popup"
+        render={() => {
+          return <PopupPage />;
+        }}
+      />
+      <Route
+        path="/login"
+        render={() => {
+          setMenu(MainMenu.DEFAULT, Default.LOGIN);
+          return <LoginPage />;
+        }}
+      />
+      {/* <Route path="/">
         <Redirect to="/jobinfo/greetings" />
-      </Route>
+      </Route> */}
       <Route
         path="/jobinfo/greetings"
         render={() => {
