@@ -1,287 +1,320 @@
 @import './color.scss';
 @import './media.scss';
 .PageHeader {
-    span {
-        color: $postech-red;
+  span {
+    color: $postech-red;
+  }
+  @include mobile() {
+    margin-left: 20px;
+    text-align: left;
+  }
+}
+
+.NormalPage {
+  > div {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    > div {
+      width: 100%;
+      padding: 0;
+      margin: 5px 0;
     }
-    @include mobile() {
-        margin-left: 20px;
-        text-align: left;
+  }
+  @media (min-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px !important;
+    margin-bottom: 40px !important;
+    flex-grow: 8;
+    margin: 0 5%;
+  }
+
+  @media (max-width: 1199px) {
+    text-align: center;
+    min-height: 300px;
+    h1 {
+      font-size: 1.5em;
     }
+    h2 {
+      font-size: 1.25em;
+    }
+  }
 }
 
 .HeaderBox {
-    background-color: $postech-ivory;
-    text-align: center;
-    padding: 15px 15px;
-    p {
-        color: $postech-red;
-        font-weight: 600;
-    }
+  background-color: $postech-ivory;
+  text-align: center;
+  padding: 15px 15px;
+  p {
+    color: $postech-red;
+    font-weight: 600;
+  }
 }
 
 .ImageContainer {
-    text-align: center;
-    img {
-        @include pc() {}
-        @include mobile() {
-            // margin: 0 10px;
-            width: 100%;
-        }
+  text-align: center;
+  img {
+    @include pc() {
     }
+    @include mobile() {
+      // margin: 0 10px;
+      width: 100%;
+    }
+  }
 }
 
 .ImageBox {
+  @include mobile() {
+    padding: 0 10px;
+  }
+  img {
+    @include pc() {
+      width: 100%;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%, 0);
+      min-height: 350px;
+    }
     @include mobile() {
-        padding: 0 10px;
+      // margin: 0 10px;
+      width: 100%;
     }
-    img {
-        @include pc() {
-            width: 100%;
-            position: relative;
-            left: 50%;
-            transform: translate(-50%, 0);
-            min-height: 350px;
-        }
-        @include mobile() {
-            // margin: 0 10px;
-            width: 100%;
-        }
-    }
+  }
 }
 
 .TextImageContainer {
-    @include pc() {
-        display: block;
-        float: left;
-        img {
-            float: left;
-            padding: 30px;
-            padding-left: 60px;
-        }
-        ul {
-            position: relative;
-            padding-top: 100px;
-        }
+  @include pc() {
+    display: block;
+    float: left;
+    img {
+      float: left;
+      padding: 30px;
+      padding-left: 60px;
     }
-    @include mobile() {
-        display: block;
-        float: left;
-        img {
-            padding-bottom: 10px;
-            padding-top: 10px;
-        }
-        div {
-            position: relative;
-        }
+    ul {
+      position: relative;
+      padding-top: 100px;
     }
+  }
+  @include mobile() {
+    display: block;
+    float: left;
+    img {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    div {
+      position: relative;
+    }
+  }
 }
 
 .TextBox {
-    text-align: left;
-    a,
-    button {
+  text-align: left;
+  a,
+  button {
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover,
+    &:active {
+      color: $postech-red;
+      background-color: white;
+    }
+  }
+  @include mobile() {
+    margin: 0 10px;
+  }
+}
+
+.TableBox {
+  overflow-x: auto;
+  &.LeftAlign {
+    td {
+      text-align: left;
+    }
+  }
+  @include mobile() {
+    h2 {
+      margin-left: 10px;
+      text-align: left;
+    }
+    th,
+    td {
+      white-space: nowrap;
+    }
+  }
+  table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+    tr {
+      border-bottom: 1px solid $border-color;
+      &:first-child {
+        border-top: 1px solid $border-brown;
+      }
+    }
+    th {
+      background-color: $postech-ivory;
+    }
+    th:last-child,
+    td:last-child {
+      border: 0;
+    }
+    th,
+    td {
+      height: 30px;
+      padding: 10px 10px;
+      border-right: 1px solid #dedede;
+      input[type='text'] {
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+      }
+      input[type='date'],
+      input[type='datetime-local'] {
+        width: 100%;
+        height: 100%;
+        font-size: 15px;
+      }
+      .TableLineBreak {
+        display: none;
+      }
+      @include mobile() {
+        .TableLineBreak {
+          display: inline;
+        }
+      }
+      a,
+      button {
+        height: 30px;
+        font-size: 18px;
         background-color: transparent;
-        color: black;
+        color: #434343;
         cursor: pointer;
         text-decoration: none;
         &:hover,
         &:active {
-            color: $postech-red;
-            background-color: white;
+          color: $postech-red;
+          background-color: white;
         }
+      }
     }
-    @include mobile() {
-        margin: 0 10px;
-    }
-}
-
-.TableBox {
-    overflow-x: auto;
-    &.LeftAlign {
-        td {
-            text-align: left;
-        }
-    }
-    @include mobile() {
-        h2 {
-            margin-left: 10px;
-            text-align: left;
-        }
-        th,
-        td {
-            white-space: nowrap;
-        }
-    }
-    table {
-        margin-bottom: 20px;
-        border-collapse: collapse;
-        border-spacing: 0;
-        min-width: 100%;
-        max-width: 100%;
+  }
+  .TableDropDown {
+    span {
+      display: inline-block;
+      > div:first-child {
+        width: 100%;
         text-align: center;
-        tr {
-            border-bottom: 1px solid $border-color;
-            &:first-child {
-                border-top: 1px solid $border-brown;
-            }
+        min-width: 160px;
+        max-width: 160px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        font-size: 1.2rem;
+        border: 1px solid $postech-red;
+        height: 30px;
+        line-height: 30px;
+        padding span {
+          text-align: right;
         }
-        th {
-            background-color: $postech-ivory;
+        a {
+          padding: 1px 1px;
+          width: 100%;
+          font-size: 0.9rem;
+          background-color: white;
+          color: $postech-red;
         }
-        th:last-child,
-        td:last-child {
-            border: 0;
+        &:hover {
+          cursor: pointer;
         }
-        th,
-        td {
-            height: 30px;
-            padding: 10px 10px;
-            border-right: 1px solid #dedede;
-            input[type='text'] {
-                width: 100%;
-                height: 100%;
-                font-size: 18px;
-            }
-            input[type='date'],
-            input[type='datetime-local'] {
-                width: 100%;
-                height: 100%;
-                font-size: 15px;
-            }
-            .TableLineBreak {
-                display: none;
-            }
-            @include mobile() {
-                .TableLineBreak {
-                    display: inline;
-                }
-            }
-            a,
-            button {
-                height: 30px;
-                font-size: 18px;
-                background-color: transparent;
-                color: #434343;
-                cursor: pointer;
-                text-decoration: none;
-                &:hover,
-                &:active {
-                    color: $postech-red;
-                    background-color: white;
-                }
-            }
+      }
+      .TableDropDownItem {
+        visibility: hidden;
+        position: absolute;
+        min-width: 160px;
+        max-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(-1em);
+        z-index: 3;
+        transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+        max-height: 500px;
+        overflow: auto;
+        a {
+          font-size: 0.8rem;
+          overflow: hidden;
+          float: none;
+          background-color: white;
+          color: black;
+          padding: 6px 16px;
+          text-decoration: none;
+          display: block;
+          &:hover,
+          &:active {
+            background-color: $postech-red;
+            color: white;
+            cursor: pointer;
+          }
         }
+      }
+      &.open {
+        .TableDropDownItem {
+          visibility: visible;
+          opacity: 1;
+          z-index: 3;
+          transform: translateY(0%);
+          transition-delay: 0s, 0s, 0.3s;
+        }
+      }
+      &:hover,
+      &:active {
+        > div:first-child {
+          color: $postech-red;
+        }
+      }
     }
-    .TableDropDown {
-        span {
-            display: inline-block;
-            >div:first-child {
-                width: 100%;
-                text-align: center;
-                min-width: 160px;
-                max-width: 160px;
-                overflow-x: hidden;
-                overflow-y: hidden;
-                font-size: 1.2rem;
-                border: 1px solid $postech-red;
-                height: 30px;
-                line-height: 30px;
-                padding span {
-                    text-align: right;
-                }
-                a {
-                    padding: 1px 1px;
-                    width: 100%;
-                    font-size: 0.9rem;
-                    background-color: white;
-                    color: $postech-red;
-                }
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            .TableDropDownItem {
-                visibility: hidden;
-                position: absolute;
-                min-width: 160px;
-                max-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                opacity: 0;
-                transform: translateY(-1em);
-                z-index: 3;
-                transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-                max-height: 500px;
-                overflow: auto;
-                a {
-                    font-size: 0.8rem;
-                    overflow: hidden;
-                    float: none;
-                    background-color: white;
-                    color: black;
-                    padding: 6px 16px;
-                    text-decoration: none;
-                    display: block;
-                    &:hover,
-                    &:active {
-                        background-color: $postech-red;
-                        color: white;
-                        cursor: pointer;
-                    }
-                }
-            }
-            &.open {
-                .TableDropDownItem {
-                    visibility: visible;
-                    opacity: 1;
-                    z-index: 3;
-                    transform: translateY(0%);
-                    transition-delay: 0s, 0s, 0.3s;
-                }
-            }
-            &:hover,
-            &:active {
-                >div:first-child {
-                    color: $postech-red;
-                }
-            }
-        }
-    }
+  }
 }
 
 .ButtonBox {
-    margin: 10px 0;
-    text-align: center;
-    a {
-        display: inline-block;
-        margin: 0 5px;
-        padding: 0 11px;
-        height: 40px;
-        width: 90px;
-        line-height: 40px;
-        font-size: 20px;
-        text-decoration: none;
-        border: 0;
-        box-shadow: none;
-        transition-duration: 0.3s;
-        background-color: $postech-red;
-        color: white;
-        cursor: pointer;
-        &:hover {
-            color: $postech-red;
-            background-color: white;
-        }
+  margin: 10px 0;
+  text-align: center;
+  a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0 11px;
+    height: 40px;
+    width: 90px;
+    line-height: 40px;
+    font-size: 20px;
+    text-decoration: none;
+    border: 0;
+    box-shadow: none;
+    transition-duration: 0.3s;
+    background-color: $postech-red;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: $postech-red;
+      background-color: white;
     }
+  }
 }
 
 .HideOnMobile {
-    @include mobile() {
-        display: none;
-    }
+  @include mobile() {
+    display: none;
+  }
 }
 
 .HideOnPc {
-    @include pc() {
-        display: none;
-    }
+  @include pc() {
+    display: none;
+  }
 }

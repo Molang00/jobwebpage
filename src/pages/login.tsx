@@ -67,14 +67,16 @@ const LoginForm: React.FC = () => {
 
 const LoginPage = () => {
   return (
-    <div className="p-grid p-justify-between">
-      <div className="p-col-12">
-        <h1 className={commonStyles.PageHeader}>
-          <span>| </span>로그인
-        </h1>
-      </div>
-      <div className="p-col-12">
-        <LoginForm />
+    <div className={commonStyles.NormalPage}>
+      <div className="p-grid p-justify-between">
+        <div className="p-col-12">
+          <h1 className={commonStyles.PageHeader}>
+            <span>| </span>로그인
+          </h1>
+        </div>
+        <div className="p-col-12">
+          <LoginForm />
+        </div>
       </div>
     </div>
   );
