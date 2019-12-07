@@ -8,7 +8,7 @@ import styles from '../styles/pages/login.module.scss';
 import commonStyles from '../styles/common.module.scss';
 
 const LoginForm: React.FC = () => {
-  const [userId, setUserId] = React.useState('');
+  const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const { isLogin } = useSelector((state: RootState) => state.auth);
@@ -21,7 +21,7 @@ const LoginForm: React.FC = () => {
   }, [isLogin]);
 
   const submit = () => {
-    if (userId === '') {
+    if (id === '') {
       return alert('POVIS 계정 아이디를 입력해주세요.');
     }
     if (password === '') {
@@ -29,7 +29,7 @@ const LoginForm: React.FC = () => {
     }
     dispatch(
       authActions.startLogin({
-        userId,
+        id,
         password
       })
     );
@@ -44,9 +44,9 @@ const LoginForm: React.FC = () => {
       <div>
         <div>
           <label>
-            <b>Povis ID</b>
+            <b>ID</b>
           </label>
-          <input type="text" name="povisId" onChange={event => setUserId(event.currentTarget.value)} />
+          <input type="text" name="povisId" onChange={event => setId(event.currentTarget.value)} />
           <label>
             <b>Password</b>
           </label>

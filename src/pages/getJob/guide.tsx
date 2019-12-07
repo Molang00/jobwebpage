@@ -6,7 +6,7 @@ const GuidePage: React.FC = () => {
   return (
     <Main title={'인턴십 프로그램'}>
       <React.Fragment>
-        <div className="p-col-12 p-lg-6">
+        <div className="p-col-12">
           <div className={commonStyles.TextBox}>
             <ul>
               <li>

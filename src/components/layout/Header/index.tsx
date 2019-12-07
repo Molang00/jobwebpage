@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 
 import { RootState } from '../../../store/store';
 import { mainMenuActions, MainMenu } from '../../../store/modules/mainMenu';
+import { authActions } from '../../../store/modules/auth';
 import TopNav from './TopNav';
 import MobileTopNav from './MobileTopNav';
 import BottomNav from './BottomNav';
@@ -14,8 +15,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [mobileSubMenuOpen, setMobileSubMenuOpen] = React.useState(false);
   const [mobileTopNavOpen, setMobileTopNavOpen] = React.useState(false);
-  const { mainMenu, subMenu } = useSelector((state: RootState) => state);
-  const [auth, setAuth] = React.useState({ isLogin: true, userInfo: { username: 'jeungwoo' } });
+  const { auth, mainMenu, subMenu } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -44,12 +44,7 @@ const Header = () => {
   };
 
   const logout = () => {
-    setAuth({
-      isLogin: false,
-      userInfo: {
-        username: ''
-      }
-    });
+    dispatch(authActions.startLogout(true));
   };
 
   return (

@@ -7,7 +7,7 @@ const GreetingPage: React.FC = () => {
   return (
     <Main title={'조직'}>
       <React.Fragment>
-        <div className="p-col-12 p-lg-6">
+        <div className="p-col-12">
           <div className={commonStyles.TextBox}>
             <ul>
               <li>
@@ -27,7 +27,12 @@ const GreetingPage: React.FC = () => {
             </ul>
           </div>
           <div className={commonStyles.ImageContainer}>
-            <img src={organizationImg} alt="organizationImg" className={commonStyles.ImageBox} />
+            <img
+              style={{ width: '100%' }}
+              src={organizationImg}
+              alt="organizationImg"
+              className={commonStyles.ImageBox}
+            />
           </div>
           <div className={commonStyles.TextBox}>
             <ul>

@@ -7,7 +7,7 @@ const GreetingPage: React.FC = () => {
   return (
     <Main title={'역할'}>
       <React.Fragment>
-        <div className="p-col-12 p-lg-6">
+        <div className="p-col-12">
           <div className={commonStyles.TextBox}>
             <ul>
               <li>
@@ -21,7 +21,7 @@ const GreetingPage: React.FC = () => {
             </ul>
             <br />
             <div className={commonStyles.ImageContainer}>
-              <img src={roleImg} alt="roleImg" />
+              <img style={{ width: '100%' }} src={roleImg} alt="roleImg" />
             </div>
             <ul>
               <ul>

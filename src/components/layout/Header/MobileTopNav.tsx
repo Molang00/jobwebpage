@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { UserSchema, Maybe } from '@postech-ses/ses-core';
 
 import { className } from '../../../styles/styleUtil';
 
@@ -10,7 +11,7 @@ import styles from '../../../styles/components/Layout/Header.module.scss';
 
 interface Props {
   isLogin: boolean;
-  userInfo: any | null;
+  userInfo: UserSchema | null;
   mobileTopNavOpen: boolean;
   closeMobileTopNav: () => void;
   toggleMobileTopNav: () => void;
@@ -53,13 +54,16 @@ const MobileTopNav: React.FC<Props> = ({
               <a>
                 <FontAwesomeIcon icon={faUser} />
                 &nbsp;
-                {userInfo.username}
+                {Maybe.fromNullable(userInfo)
+                  .map(user => user.name)
+                  .getOrElse('')}
               </a>
               <a onClick={logout}>로그아웃</a>
             </React.Fragment>
           ) : (
             <React.Fragment>
               <a onClick={() => routeToOtherMenu('/login')}>로그인</a>
+              <a onClick={() => routeToOtherMenu('/sign-up')}>회원가입</a>
             </React.Fragment>
           )}
         </div>

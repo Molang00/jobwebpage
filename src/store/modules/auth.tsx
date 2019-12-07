@@ -1,8 +1,9 @@
 import { set, lensProp, pipe } from 'ramda';
 import { AnyAction } from 'redux';
-import { LoginForm, UserSchema } from '@postech-ses/job-core';
+import { LoginForm, UserSchema, SignUpForm } from '@postech-ses/ses-core';
 
 export enum AuthActionTypes {
+  START_SIGNUP = 'auth/START_SIGNUP',
   START_LOGIN = 'auth/START_LOGIN',
   END_LOGIN_WITH_SUCCESS = 'auth/END_LOGIN_WITH_SUCCESS',
   START_LOGOUT = 'auth/START_LOGOUT',
@@ -10,6 +11,10 @@ export enum AuthActionTypes {
 }
 
 export const authActions = {
+  startSignup: (payload: SignUpForm) => ({
+    type: AuthActionTypes.START_SIGNUP,
+    payload
+  }),
   startLogin: (payload: LoginForm) => ({
     type: AuthActionTypes.START_LOGIN,
     payload
@@ -56,6 +61,8 @@ const setStateOnLogoutSuccess = pipe<AuthState, AuthState, AuthState>(
 
 export default (state: AuthState = initialAuthState, action: AuthAction | {}) => {
   switch ((action as AuthAction).type) {
+    case AuthActionTypes.START_SIGNUP:
+      return state;
     case AuthActionTypes.START_LOGIN:
       return state;
     case AuthActionTypes.END_LOGIN_WITH_SUCCESS:

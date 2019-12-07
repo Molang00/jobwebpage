@@ -5,10 +5,9 @@ import { useDispatch } from 'react-redux';
 import { mainMenuActions, MainMenu } from '../store/modules/mainMenu';
 import { subMenuActions, JobInfo, Course, GetJob, SES, SubMenu, Default } from '../store/modules/subMenu';
 
-const PopupPage = loadable(() => import(/* webpackChunkName: "PopupPage" */ '../pages/popup'));
 const LoginPage = loadable(() => import(/* webpackChunkName: "LoginPage" */ '../pages/login'));
+const SignUpPage = loadable(() => import(/* webpackChunkName: "Home" */ '../pages/signup'));
 
-const Home = loadable(() => import(/* webpackChunkName: "Home" */ '../pages'));
 const GreetingPage = loadable(() => import(/* webpackChunkName: "GreetingPage" */ '../pages/jobInfo/greetings'));
 const OrganizationPage = loadable(() =>
   import(/* webpackChunkName: "OrganizationPage" */ '../pages/jobInfo/organization')
@@ -22,6 +21,9 @@ const InternshipPage = loadable(() => import(/* webpackChunkName: "InternshipPag
 const GuidePage = loadable(() => import(/* webpackChunkName: "GuidePage" */ '../pages/getJob/guide'));
 const AboutSesPage = loadable(() => import(/* webpackChunkName: "AboutSesPage" */ '../pages/ses/aboutses'));
 const SesResultsPage = loadable(() => import(/* webpackChunkName: "SesResultsPage" */ '../pages/ses/sesresults'));
+const ResultStudentExperiencePage = loadable(() =>
+  import(/* webpackChunkName: "ResultStudentExperiencePage" */ '../pages/ses/student-experience')
+);
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -33,13 +35,9 @@ const Routes = () => {
 
   return (
     <Switch>
-      <Route exact path="/" render={() => <Home />} />
-      <Route
-        path="/popup"
-        render={() => {
-          return <PopupPage />;
-        }}
-      />
+      <Route exact path="/">
+        <Redirect to="/jobinfo/greetings" />
+      </Route>
       <Route
         path="/login"
         render={() => {
@@ -47,9 +45,13 @@ const Routes = () => {
           return <LoginPage />;
         }}
       />
-      {/* <Route path="/">
-        <Redirect to="/jobinfo/greetings" />
-      </Route> */}
+      <Route
+        path="/sign-up"
+        render={() => {
+          setMenu(MainMenu.DEFAULT, Default.LOGIN);
+          return <SignUpPage />;
+        }}
+      />
       <Route
         path="/jobinfo/greetings"
         render={() => {
@@ -125,6 +127,13 @@ const Routes = () => {
         render={() => {
           setMenu(MainMenu.SES, SES.ABOUTSES);
           return <AboutSesPage />;
+        }}
+      />
+      <Route
+        path="/ses/student-experience"
+        render={() => {
+          setMenu(MainMenu.SES, SES.REVIEWS);
+          return <ResultStudentExperiencePage />;
         }}
       />
     </Switch>
