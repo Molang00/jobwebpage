@@ -116,17 +116,17 @@ const Routes = () => {
         }}
       />
       <Route
-        path="/ses/sesresults"
-        render={() => {
-          setMenu(MainMenu.SES, SES.ABOUTSES);
-          return <SesResultsPage />;
-        }}
-      />
-      <Route
         path="/ses/aboutses"
         render={() => {
           setMenu(MainMenu.SES, SES.ABOUTSES);
           return <AboutSesPage />;
+        }}
+      />
+      <Route
+        path="/ses/sesresults"
+        render={() => {
+          setMenu(MainMenu.SES, SES.SESRESULTS);
+          return <SesResultsPage />;
         }}
       />
       <Route
