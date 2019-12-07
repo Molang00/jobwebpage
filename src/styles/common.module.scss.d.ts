@@ -1,6 +1,7 @@
 import { string } from 'prop-types';
 
 export const PageHeader: string;
+export const NormalPage: string;
 export const HeaderBox: string;
 export const ImageContainer: string;
 export const TextImageContainer: string;

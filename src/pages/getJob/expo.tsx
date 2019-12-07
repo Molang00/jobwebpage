@@ -6,7 +6,7 @@ const ExpoPage: React.FC = () => {
   return (
     <Main title={'채용상담 및 박람회'}>
       <React.Fragment>
-        <div className="p-col-12 p-lg-6">
+        <div className="p-col-12">
           <div className={commonStyles.TextBox}>
             <ul>
               <li>

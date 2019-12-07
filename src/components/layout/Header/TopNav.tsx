@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { UserSchema, Maybe } from '@postech-ses/ses-core';
 
 import styles from '../../../styles/components/Layout/Header.module.scss';
 
 interface Props {
   isLogin: boolean;
-  userInfo: any | null;
+  userInfo: UserSchema | null;
   logout: () => void;
 }
 
@@ -23,11 +24,17 @@ const TopNav: React.FC<Props> = ({ isLogin, userInfo, logout }) => {
             </a>
 
             <a>
-              <FontAwesomeIcon icon={faUser} /> {userInfo.username}
+              <FontAwesomeIcon icon={faUser} />{' '}
+              {Maybe.fromNullable(userInfo)
+                .map(user => user.name)
+                .getOrElse('')}
             </a>
           </React.Fragment>
         ) : (
           <React.Fragment>
+            <Link to="/sign-up" className={styles.TopNavButton}>
+              회원가입
+            </Link>
             <Link to="/login" className={styles.TopNavButton}>
               로그인
             </Link>

@@ -63,7 +63,7 @@ const sesInfoList: SubMenuItem[] = [
   },
   {
     name: '체험수기',
-    pathname: '/ses/reviews'
+    pathname: '/ses/student-experience'
   }
 ];
 
