@@ -69,20 +69,8 @@ const sesInfoList: SubMenuItem[] = [
 
 const bbsInfoList: SubMenuItem[] = [
   {
-    name: '공지사항',
-    pathname: '/bbs/notice'
-  },
-  {
     name: '채용공고',
-    pathname: '/bbs/announcement'
-  },
-  {
-    name: '인턴십',
-    pathname: '/bbs/intern'
-  },
-  {
-    name: '채용행사',
-    pathname: '/bbs/party'
+    pathname: '/bbs/list/1'
   }
 ];
 
@@ -127,10 +115,7 @@ export enum SES {
 }
 
 export enum BBS {
-  NOTICE = 40,
-  ANNOUNCEMENT,
-  INTERN,
-  PARTY
+  JOBPOSTING = 40
 }
 
 export enum Default {

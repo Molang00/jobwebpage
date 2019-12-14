@@ -1,0 +1,123 @@
+@import '../../color.scss';
+@import '../../media.scss';
+
+.ListHeader {
+  height: 40px;
+  margin: 10px 0;
+
+  .Write {
+    float: right;
+    line-height: 40px;
+    padding: 0 10px;
+    background-color: $postech-red;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: $postech-red;
+      background-color: white;
+    }
+
+    @include mobile() {
+      float: left;
+      width: 90%;
+      padding: 0;
+      margin: 0 5%;
+    }
+  }
+}
+
+.List {
+  overflow-x: auto;
+  @include mobile() {
+    width: 96%;
+    padding: 0;
+    margin: 0 2%;
+
+    th,
+    td {
+      white-space: nowrap;
+    }
+  }
+  .PcTable {
+    @include pc() {
+      display: table;
+    }
+    @include mobile() {
+      display: none;
+    }
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+
+    th {
+      background-color: $postech-ivory;
+    }
+
+    tr {
+      cursor: pointer;
+      border-bottom: 1px solid $border-color;
+
+      &:first-child {
+        border-top: 1px solid $border-brown;
+      }
+    }
+
+    th,
+    td {
+      height: 30px;
+      padding: 10px 10px;
+    }
+  }
+  .MobileTable {
+    @include pc() {
+      display: none;
+    }
+    @include mobile() {
+      display: block;
+    }
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+    border-top: 1px solid $border-brown;
+    display: block;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      li {
+        border-bottom: 1px solid $border-color;
+
+        width: 100%;
+        padding: 15px 0;
+        text-align: left;
+
+        div:first-child {
+          margin-bottom: 10px;
+          padding: 0 5px;
+        }
+
+        div:last-child {
+          height: 20px;
+          color: $postech-silver;
+          a {
+            float: right;
+            padding: 0 5px;
+            line-height: 20px;
+            border-left: 1px solid $postech-silver;
+            &:last-child {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

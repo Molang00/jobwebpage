@@ -8,15 +8,6 @@ const AboutSesPage: React.FC = () => {
   return (
     <Main title={'SES 소개'}>
       <React.Fragment>
-        <div className="p-col-12">
-          <div className={commonStyles.TextBox}>
-            <ul>
-              <li>
-                <h2> SES 소개</h2>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div className="p-col-12 p-lg-12">
           <div className={commonStyles.HeaderBox}>
             <p>
