@@ -1,18 +1,12 @@
+import axios from 'axios';
 import React from 'react';
 import { range, set, lensIndex } from 'ramda';
-import Main from '../../components/layout/Main';
-import {
-  Maybe,
-  JobBoardPostForm,
-  JobBoardPostFileDto,
-  JobBoardPostSchema,
-  JobBoardPostType
-} from '@postech-ses/ses-core';
-import axios from 'axios';
 import { useHistory, useLocation } from 'react-router';
-import { REACT_APP_API_URL } from '../../config';
 import { useSelector } from 'react-redux';
+import { Maybe, BoardPostForm, BoardPostFileDto, BoardPostSchema } from '@postech-ses/job-core';
+import { REACT_APP_API_URL } from '../../config';
 import { RootState } from '../../store/store';
+import Main from '../../components/layout/Main';
 import ConditionalComponent from '../../components/bbs/ConditionalComponent';
 import { authenticatedAxios } from '../../utils/auth.util';
 import { bbsUnescape, bbsEscape } from '../../utils/bbs.util';
@@ -28,12 +22,12 @@ const WritePage = () => {
   ];
 
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const [post, setPost] = React.useState<Maybe<JobBoardPostForm>>();
+  const [post, setPost] = React.useState<Maybe<BoardPostForm>>();
   const [postId, setPostId] = React.useState<number>(0);
   const [mounted, setMounted] = React.useState<boolean>(false);
   const [title, setTitle] = React.useState<string>('');
   const [contents, setContents] = React.useState<string>('');
-  const [fileList, setFileList] = React.useState<JobBoardPostFileDto[]>([]);
+  const [fileList, setFileList] = React.useState<BoardPostFileDto[]>([]);
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
   const history = useHistory();
@@ -43,12 +37,12 @@ const WritePage = () => {
     if (!userInfo) {
       history.push('/login');
     }
-    const isUpdate = location.pathname.split('/')[5] === 'edit';
+    const isUpdate = location.pathname.split('/')[3] === 'edit';
     if (isUpdate) {
       const id = location.pathname.split('/')[4];
       axios
-        .get(`${REACT_APP_API_URL}/job-board-post/${id}`)
-        .then(res => res.data as JobBoardPostSchema)
+        .get(`${REACT_APP_API_URL}/board-post/${id}`)
+        .then(res => res.data as BoardPostSchema)
         .then(post => {
           if (!userInfo || post.creatorId.toLowerCase() !== userInfo.id.toLowerCase()) {
             alert('권한이 없습니다.');
@@ -57,7 +51,6 @@ const WritePage = () => {
           }
           const {
             id,
-            postType,
 
             title,
             contents,
@@ -69,8 +62,6 @@ const WritePage = () => {
           setPostId(id);
           setPost(
             Maybe.fromNullable({
-              postType,
-
               title,
               contents: bbsUnescape(contents),
               readCount,
@@ -108,7 +99,7 @@ const WritePage = () => {
   }, []);
 
   const save = () => {
-    const isUpdate = location.pathname.split('/')[5] === 'edit';
+    const isUpdate = location.pathname.split('/')[3] === 'edit';
     const data = new FormData();
 
     fileList.forEach((file, index) => {
@@ -116,9 +107,7 @@ const WritePage = () => {
         data.append(`${index}`, file.file);
       }
     });
-    const postType = JobBoardPostType.fromPathString(location.pathname.split('/')[2]);
 
-    data.append('postType', postType);
     data.append('title', title);
     data.append('contents', bbsEscape(contents));
     data.append('files', JSON.stringify(fileList));
@@ -131,7 +120,7 @@ const WritePage = () => {
       );
     }
 
-    const url = isUpdate ? `job-board-post/save/${postId}` : `job-board-post/save`;
+    const url = isUpdate ? `board-post/save/${postId}` : `board-post/save`;
 
     authenticatedAxios(url, {
       method: 'POST',
@@ -139,7 +128,7 @@ const WritePage = () => {
     })
       .then(() => {
         alert('저장했습니다!');
-        // history.goBack();
+        history.push('/bbs/list/1');
       })
       .catch(error => {
         if (error.response && error.response.status === 403) {
@@ -164,7 +153,7 @@ const WritePage = () => {
         reader.readAsDataURL(file);
       }).then((dstname: string) => {
         console.log(file.name);
-        const postFile: JobBoardPostFileDto = {
+        const postFile: BoardPostFileDto = {
           isUpdated: true,
           index,
           postId,

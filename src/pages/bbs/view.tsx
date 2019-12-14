@@ -2,13 +2,13 @@ import axios from 'axios';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
-import { JobBoardPostSchema, JobBoardPostFileSchema } from '@postech-ses/ses-core';
+import { BoardPostSchema, BoardPostFileSchema } from '@postech-ses/job-core';
 import { RootState } from '../../store/store';
 import { REACT_APP_API_URL, REACT_APP_FILE_DOWNLOAD_URL } from '../../config';
 import Main from '../../components/layout/Main';
 import ConditionalComponent from '../../components/bbs/ConditionalComponent';
 import { authenticatedAxios } from '../../utils/auth.util';
-import { bbsUnescape } from '../../utils/bbs.util';
+import { bbsUnescape, dateFormat } from '../../utils/bbs.util';
 import styles from '../../styles/pages/bbs/view.module.scss';
 
 const ViewPage = () => {
@@ -16,19 +16,17 @@ const ViewPage = () => {
   const location = useLocation();
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
-  const [post, setPost] = React.useState<JobBoardPostSchema>();
+  const [post, setPost] = React.useState<BoardPostSchema>();
 
   React.useEffect(() => {
     getView();
   }, []);
 
   const getView = () => {
-    const id = location.pathname.split('/')[4];
+    const id = location.pathname.split('/')[3];
     axios
-      .get(`${REACT_APP_API_URL}/job-board-post/${id}`)
+      .get(`${REACT_APP_API_URL}/board-post/${id}`)
       .then(res => {
-        console.log(userInfo);
-        console.log(res.data);
         setPost(res.data);
       })
       .catch(() => {
@@ -38,7 +36,7 @@ const ViewPage = () => {
 
   const deleteView = () => {
     const id = location.pathname.split('/')[4];
-    authenticatedAxios(`${REACT_APP_API_URL}/job-board-post/delete/${id}`, { method: 'POST' })
+    authenticatedAxios(`${REACT_APP_API_URL}/board-post/delete/${id}`, { method: 'POST' })
       .then(() => {
         alert('삭제되었습니다.');
       })
@@ -46,7 +44,7 @@ const ViewPage = () => {
         alert('데이터를 삭제하는데 실패하였습니다.');
       })
       .finally(() => {
-        history.goBack();
+        history.push(`/bbs/list/1`);
       });
   };
 
@@ -55,12 +53,20 @@ const ViewPage = () => {
   };
 
   const renderContents = (username: string, regdate: string, contents: string) => (
-    <tr className={styles.LeftAlign}>
-      <th>내용</th>
-      <td colSpan={3}>
-        <div dangerouslySetInnerHTML={createMarkup(contents)} />
-      </td>
-    </tr>
+    <React.Fragment>
+      <tr className={styles.LeftAlign}>
+        <th>작성자</th>
+        <td>{username}</td>
+        <th>작성일</th>
+        <td>{dateFormat(regdate)}</td>
+      </tr>
+      <tr className={styles.LeftAlign}>
+        <th>내용</th>
+        <td colSpan={3}>
+          <div dangerouslySetInnerHTML={createMarkup(contents)} />
+        </td>
+      </tr>
+    </React.Fragment>
   );
 
   const renderPost = () =>
@@ -89,7 +95,7 @@ const ViewPage = () => {
       <React.Fragment />
     );
 
-  const renderFileDownloadButtons = (files: JobBoardPostFileSchema[]) => {
+  const renderFileDownloadButtons = (files: BoardPostFileSchema[]) => {
     const fileNumber = files.length;
 
     return files.map((file, index) => (
@@ -121,7 +127,7 @@ const ViewPage = () => {
         <React.Fragment>
           <a
             onClick={() => {
-              history.push(`/bbs/${location.pathname.split('/')[2]}/write/${post.id}/edit`);
+              history.push(`/bbs/write/edit/${post.id}`);
             }}
           >
             수정

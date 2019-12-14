@@ -1,10 +1,10 @@
 import React from 'react';
-import { JobBoardSearchType } from '@postech-ses/ses-core';
+import { BoardSearchType } from '@postech-ses/job-core';
 import styles from '../../styles/components/bbs/SearchBox.module.scss';
 
 interface Props {
-  searchType: JobBoardSearchType;
-  setSearchType: React.Dispatch<React.SetStateAction<JobBoardSearchType>>;
+  searchType: BoardSearchType;
+  setSearchType: React.Dispatch<React.SetStateAction<BoardSearchType>>;
   searchWord: string;
   setSearchWord: React.Dispatch<React.SetStateAction<string>>;
   search: () => void;
@@ -21,17 +21,17 @@ const SearchBar: React.FC<Props> = ({ searchType, setSearchType, searchWord, set
       >
         <div onClick={() => setIsSearchTypeDropdownOpen(!isSearchTypeDropdownOpen)}>
           <a>
-            {searchType == JobBoardSearchType.TITLE_AND_CONTENT
+            {searchType == BoardSearchType.TITLE_AND_CONTENT
               ? '제목 + 내용'
-              : searchType == JobBoardSearchType.TITLE
+              : searchType == BoardSearchType.TITLE
               ? '제목'
               : '내용'}
           </a>
         </div>
         <div className={styles.SearchBoxItem}>
-          <a onClick={() => setSearchType(JobBoardSearchType.TITLE_AND_CONTENT)}>제목 + 내용</a>
-          <a onClick={() => setSearchType(JobBoardSearchType.TITLE)}>제목</a>
-          <a onClick={() => setSearchType(JobBoardSearchType.CONTENT)}>내용</a>
+          <a onClick={() => setSearchType(BoardSearchType.TITLE_AND_CONTENT)}>제목 + 내용</a>
+          <a onClick={() => setSearchType(BoardSearchType.TITLE)}>제목</a>
+          <a onClick={() => setSearchType(BoardSearchType.CONTENT)}>내용</a>
         </div>
       </span>
       <span>

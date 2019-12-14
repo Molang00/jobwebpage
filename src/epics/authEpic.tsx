@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { from, of } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
-import { LoginForm, UserSchema, SignUpForm } from '@postech-ses/ses-core';
+import { LoginForm, UserSchema, SignUpForm } from '@postech-ses/job-core';
 import { ofType, Epic } from 'redux-observable';
 import { AuthActionTypes, AuthAction, authActions } from '../store/modules/auth';
 import { REACT_APP_API_URL } from '../config';

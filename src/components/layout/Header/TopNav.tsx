@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { UserSchema, Maybe } from '@postech-ses/ses-core';
+import { UserSchema, Maybe } from '@postech-ses/job-core';
 
 import styles from '../../../styles/components/Layout/Header.module.scss';
 
