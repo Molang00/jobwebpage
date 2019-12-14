@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { useDispatch } from 'react-redux';
 import { mainMenuActions, MainMenu } from '../store/modules/mainMenu';
-import { subMenuActions, JobInfo, Course, GetJob, SES, SubMenu, Default } from '../store/modules/subMenu';
+import { subMenuActions, JobInfo, Course, GetJob, SES, BBS, SubMenu, Default } from '../store/modules/subMenu';
 
 const LoginPage = loadable(() => import(/* webpackChunkName: "LoginPage" */ '../pages/login'));
 const SignUpPage = loadable(() => import(/* webpackChunkName: "Home" */ '../pages/signup'));
@@ -24,6 +24,9 @@ const SesResultsPage = loadable(() => import(/* webpackChunkName: "SesResultsPag
 const ResultStudentExperiencePage = loadable(() =>
   import(/* webpackChunkName: "ResultStudentExperiencePage" */ '../pages/ses/student-experience')
 );
+const BbsListPage = loadable(() => import(/* webpackChunkName: "BbsListPage" */ '../pages/bbs/list'));
+const BbsWritePage = loadable(() => import(/* webpackChunkName: "BbsWritePage" */ '../pages/bbs/write'));
+const BbsViewPage = loadable(() => import(/* webpackChunkName: "BbsViewPage" */ '../pages/bbs/view'));
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -134,6 +137,27 @@ const Routes = () => {
         render={() => {
           setMenu(MainMenu.SES, SES.REVIEWS);
           return <ResultStudentExperiencePage />;
+        }}
+      />
+      <Route
+        path="/bbs/list"
+        render={() => {
+          setMenu(MainMenu.BBS, BBS.JOBPOSTING);
+          return <BbsListPage />;
+        }}
+      />
+      <Route
+        path="/bbs/write"
+        render={() => {
+          setMenu(MainMenu.BBS, BBS.JOBPOSTING);
+          return <BbsWritePage />;
+        }}
+      />
+      <Route
+        path="/bbs/view"
+        render={() => {
+          setMenu(MainMenu.BBS, BBS.JOBPOSTING);
+          return <BbsViewPage />;
         }}
       />
     </Switch>

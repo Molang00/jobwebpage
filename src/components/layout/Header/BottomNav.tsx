@@ -37,23 +37,27 @@ const BottomNav: React.FC<Props> = ({
       <div className={activeMainMenu === mainMenu ? styles.active : ''}>
         <div onClick={() => routeToMainMenu(subMenuList[0].pathname)}>
           {menuWord}
-          <a onClick={() => toggleMobileSubMenu(mainMenu)}>
-            <FontAwesomeIcon icon={activeMainMenu === mainMenu && mobileSubMenuOpen ? faAngleUp : faAngleDown} />
-          </a>
-        </div>
-        <div
-          className={
-            activeMainMenu === mainMenu && mobileSubMenuOpen
-              ? className(styles.BottomNavSubItems, styles.active)
-              : styles.BottomNavSubItems
-          }
-        >
-          {subMenuList.map((subMenuItem, index) => (
-            <a key={index} onClick={() => routeToSubMenu(subMenuItem.pathname)}>
-              {subMenuItem.name}
+          {mainMenu == MainMenu.BBS ? null : (
+            <a onClick={() => toggleMobileSubMenu(mainMenu)}>
+              <FontAwesomeIcon icon={activeMainMenu === mainMenu && mobileSubMenuOpen ? faAngleUp : faAngleDown} />
             </a>
-          ))}
+          )}
         </div>
+        {mainMenu == MainMenu.BBS ? null : (
+          <div
+            className={
+              activeMainMenu === mainMenu && mobileSubMenuOpen
+                ? className(styles.BottomNavSubItems, styles.active)
+                : styles.BottomNavSubItems
+            }
+          >
+            {subMenuList.map((subMenuItem, index) => (
+              <a key={index} onClick={() => routeToSubMenu(subMenuItem.pathname)}>
+                {subMenuItem.name}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     );
   };
@@ -71,7 +75,7 @@ const BottomNav: React.FC<Props> = ({
         {renderMainMenuButton('진로', MainMenu.COURSE, menuList[MainMenu.COURSE])}
         {renderMainMenuButton('취업', MainMenu.GETJOB, menuList[MainMenu.GETJOB])}
         {renderMainMenuButton('SES', MainMenu.SES, menuList[MainMenu.SES])}
-        {renderMainMenuButton('게시판', MainMenu.BBS, menuList[MainMenu.BBS])}
+        {renderMainMenuButton('채용공고', MainMenu.BBS, menuList[MainMenu.BBS])}
       </div>
     </nav>
   );

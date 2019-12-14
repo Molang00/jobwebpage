@@ -1,4 +1,4 @@
-import { string } from 'prop-types';
+import { string } from "prop-types";
 
 export const PageHeader: string;
 export const NormalPage: string;
@@ -8,7 +8,6 @@ export const TextImageContainer: string;
 export const ImageBox: string;
 export const TextBox: string;
 export const TableBox: string;
-export const LeftAlign: string;
 export const TableLineBreak: string;
 export const TableDropDown: string;
 export const TableDropDownItem: string;
@@ -16,3 +15,13 @@ export const ButtonBox: string;
 export const open: string;
 export const HideOnMobile: string;
 export const HideOnPc: string;
+export const SearchBox: string;
+export const SearchButton: string;
+export const SearchBoxItem: string;
+export const Pagination: string;
+export const active: string;
+export const View: string;
+export const LeftAlign: string;
+export const DownloadButton: string;
+export const ViewFooter: string;
+export const WriteFooter: string;

@@ -194,8 +194,9 @@
       button {
         height: 30px;
         font-size: 18px;
-        background-color: transparent;
-        color: #434343;
+        padding: 5px 10px;
+        background-color: $postech-red;
+        color: white;
         cursor: pointer;
         text-decoration: none;
         &:hover,
@@ -222,77 +223,365 @@
         line-height: 30px;
         padding span {
           text-align: right;
-        }
-        a {
-          padding: 1px 1px;
-          width: 100%;
-          font-size: 0.9rem;
-          background-color: white;
-          color: $postech-red;
-        }
-        &:hover {
-          cursor: pointer;
-        }
-      }
-      .TableDropDownItem {
-        visibility: hidden;
-        position: absolute;
-        min-width: 160px;
-        max-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transform: translateY(-1em);
-        z-index: 3;
-        transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-        max-height: 500px;
-        overflow: auto;
-        a {
-          font-size: 0.8rem;
-          overflow: hidden;
-          float: none;
-          background-color: white;
-          color: black;
-          padding: 6px 16px;
-          text-decoration: none;
-          display: block;
-          &:hover,
-          &:active {
-            background-color: $postech-red;
-            color: white;
+          tr {
+            border-bottom: 1px solid $border-color;
+            &:first-child {
+              border-top: 1px solid $border-brown;
+            }
+            a {
+              cursor: pointer;
+            }
+          }
+          a {
+            padding: 1px 1px;
+            width: 100%;
+            font-size: 0.9rem;
+            background-color: white;
+            color: $postech-red;
+          }
+          &:hover {
             cursor: pointer;
           }
         }
-      }
-      &.open {
         .TableDropDownItem {
-          visibility: visible;
-          opacity: 1;
+          visibility: hidden;
+          position: absolute;
+          min-width: 160px;
+          max-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          opacity: 0;
+          transform: translateY(-1em);
           z-index: 3;
-          transform: translateY(0%);
-          transition-delay: 0s, 0s, 0.3s;
+          transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+          max-height: 500px;
+          overflow: auto;
+          a {
+            font-size: 0.8rem;
+            overflow: hidden;
+            float: none;
+            background-color: white;
+            color: black;
+            padding: 6px 16px;
+            text-decoration: none;
+            display: block;
+            &:hover,
+            &:active {
+              background-color: $postech-red;
+              color: white;
+              cursor: pointer;
+            }
+          }
+        }
+        &.open {
+          .TableDropDownItem {
+            visibility: visible;
+            opacity: 1;
+            z-index: 3;
+            transform: translateY(0%);
+            transition-delay: 0s, 0s, 0.3s;
+          }
+        }
+        &:hover,
+        &:active {
+          > div:first-child {
+            color: $postech-red;
+          }
         }
       }
-      &:hover,
-      &:active {
-        > div:first-child {
+    }
+  }
+
+  .ButtonBox {
+    margin: 10px 0;
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 0 11px;
+      height: 40px;
+      width: 90px;
+      line-height: 40px;
+      font-size: 20px;
+      text-decoration: none;
+      border: 0;
+      box-shadow: none;
+      transition-duration: 0.3s;
+      background-color: $postech-red;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        color: $postech-red;
+        background-color: white;
+      }
+    }
+  }
+
+  .HideOnMobile {
+    @include mobile() {
+      display: none;
+    }
+  }
+
+  .HideOnPc {
+    @include pc() {
+      display: none;
+    }
+  }
+}
+
+.SearchBox {
+  text-align: center;
+  display: block;
+  height: 42px;
+  margin: 30px 0;
+  span {
+    display: inline-block;
+    > div:first-child {
+      height: 40px;
+      min-width: 160px;
+      margin-right: 20px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 1.2rem;
+      border: 1px solid $postech-red;
+      padding span {
+        text-align: right;
+      }
+      @include mobile() {
+        min-width: 0;
+        padding: 0 10px;
+        height: 30px;
+        max-width: 120px;
+        overflow-x: hidden;
+        line-height: 30px;
+        font-size: 0.9rem;
+        margin-right: 10px;
+      }
+      a {
+        padding: 0 16px;
+        @include mobile() {
+          width: 80px;
+          padding: 0;
+        }
+      }
+      input[type='text'] {
+        height: 90%;
+        width: 260px;
+        font-size: 20px;
+        padding: 0;
+        border: 0;
+        @include mobile() {
+          width: 120px;
+          font-size: 0.9rem;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      &.SearchButton {
+        background-color: $postech-red;
+        color: white;
+        &:hover {
+          background-color: white;
           color: $postech-red;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        color: $postech-red;
+      }
+    }
+    .SearchBoxItem {
+      visibility: hidden;
+      position: absolute;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(-1em);
+      z-index: 3;
+      transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+      max-height: 500px;
+      overflow: auto;
+      a {
+        float: none;
+        background-color: white;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        @include mobile() {
+          padding: 4px 10px;
+        }
+        &:hover,
+        &:active {
+          background-color: $postech-red;
+          color: white;
+          cursor: pointer;
+        }
+      }
+      @include mobile() {
+        min-width: 0;
+        font-size: 0.8rem;
+      }
+    }
+    &.open {
+      .SearchBoxItem {
+        visibility: visible;
+        opacity: 1;
+        z-index: 3;
+        transform: translateY(0%);
+        transition-delay: 0s, 0s, 0.3s;
+      }
+    }
+    &:hover,
+    &:active {
+      > div:first-child {
+        color: $postech-red;
+      }
+    }
+  }
+  span:last-child {
+    > div:first-child {
+      margin-right: 0;
+      @include mobile {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.Pagination {
+  float: left;
+  width: 100%;
+  height: 28px;
+  padding: 15px 0;
+  > ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    border: 0;
+    > li {
+      display: inline-block;
+      zoom: 1;
+      margin: 0;
+      padding: 0 1px;
+      background: none;
+      border: 0;
+      list-style: none;
+      color: $postech-red;
+      font-weight: bold;
+      font-size: 20px;
+      > a {
+        display: block;
+        margin: 0;
+        padding: 0 11px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 13px;
+        color: #999;
+        text-decoration: none;
+        border: 0;
+        background-color: $postech-ivory;
+        box-shadow: none;
+        transition-duration: 0.3s;
+        cursor: pointer;
+        &.active {
+          background-color: $postech-red;
+          color: $postech-ivory;
         }
       }
     }
   }
 }
 
-.ButtonBox {
+.View {
+  overflow-x: auto;
+  @include mobile() {
+    h2 {
+      margin-left: 10px;
+      text-align: left;
+    }
+    table {
+      width: 100%;
+    }
+    th {
+      white-space: nowrap;
+    }
+    td {
+      white-space: normal;
+    }
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+    tr {
+      border-bottom: 1px solid $border-color;
+      &:first-child {
+        border-top: 1px solid $border-brown;
+      }
+    }
+    th {
+      background-color: $postech-ivory;
+      a {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    th,
+    td {
+      height: 30px;
+      padding: 10px 10px;
+      .TableLineBreak {
+        display: none;
+      }
+      @include mobile() {
+        .TableLineBreak {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+.DownloadButton {
+  display: block;
+  margin: auto;
+  padding: 0 11px;
+  height: 28px;
+  // width: 50%;
+  line-height: 28px;
+  font-size: 13px;
+  text-decoration: none;
+  border: 0;
+  box-shadow: none;
+  transition-duration: 0.3s;
+  background-color: $postech-ivory;
+  color: black;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: $postech-red;
+  }
+}
+
+.ViewFooter {
   margin: 10px 0;
   text-align: center;
   a {
     display: inline-block;
     margin: 0 5px;
     padding: 0 11px;
-    height: 40px;
-    width: 90px;
-    line-height: 40px;
-    font-size: 20px;
+    height: 28px;
+    width: 60px;
+    line-height: 28px;
+    font-size: 13px;
     text-decoration: none;
     border: 0;
     box-shadow: none;
@@ -307,14 +596,28 @@
   }
 }
 
-.HideOnMobile {
-  @include mobile() {
-    display: none;
-  }
-}
-
-.HideOnPc {
-  @include pc() {
-    display: none;
+.WriteFooter {
+  margin: 10px 0;
+  margin-top: 40px;
+  text-align: center;
+  a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0 11px;
+    height: 28px;
+    width: 60px;
+    line-height: 28px;
+    font-size: 13px;
+    text-decoration: none;
+    border: 0;
+    box-shadow: none;
+    transition-duration: 0.3s;
+    background-color: $postech-red;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: $postech-red;
+      background-color: white;
+    }
   }
 }

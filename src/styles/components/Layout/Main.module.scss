@@ -20,6 +20,12 @@
       // min-height: 700px;
       // margin-right: 390px;
     }
+
+    .BBSContentArea {
+      display: inline-block;
+      margin-left: 5%;
+      width: 90%;
+    }
   }
   @include mobile() {
     .SideNavArea {

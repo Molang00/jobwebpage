@@ -82,7 +82,7 @@ const SurveyPage = () => {
                         <a
                           href={`${REACT_APP_FILE_DOWNLOAD_URL}/public/student-experience/${studentExperience.fileName}`}
                           download={`${studentExperience.departmentName}_${studentExperience.userName} 수기.pdf`}
-                          style={{ color: 'black' }}
+                          style={{ color: 'white' }}
                         >
                           <FontAwesomeIcon icon={faFileDownload} />
                         </a>

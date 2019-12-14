@@ -26,7 +26,7 @@ export const ImgBox: React.SFC<ImgBoxProps> = ({ activeMainMenu }) => {
   return (
     <React.Fragment>
       <div className={styles.ImgBox}>
-        <img src={images[activeMainMenu]} />
+        <img src={images[activeMainMenu]} alt="activeMainMenu" />
       </div>
     </React.Fragment>
   );

@@ -10,7 +10,7 @@ export const authenticatedAxios = (path: string, config: AxiosRequestConfig) => 
   }
   headers['Authorization'] = `bearer ${window.localStorage.getItem('ses-login-token')}`;
   config.headers = headers;
-  config.timeout = 3000;
+  // config.timeout = 3000;
   return axios(`${REACT_APP_API_URL}/${path}`, config);
 };
 

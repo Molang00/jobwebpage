@@ -220,23 +220,8 @@ export const HeaderFeatures = () => {
             </div>
             <div className={activeMainMenu === MainMenu.BBS ? styles.active : ''}>
               <div>
-                게시판
-                <a onClick={() => toggleMobileSubMenu(MainMenu.BBS)}>
-                  <FontAwesomeIcon
-                    icon={activeMainMenu == MainMenu.BBS && mobileSubMenuOpen ? faAngleUp : faAngleDown}
-                  />
-                </a>
-              </div>
-              <div
-                className={
-                  activeMainMenu === MainMenu.BBS && mobileSubMenuOpen
-                    ? className(styles.BottomNavSubItems, styles.active)
-                    : styles.BottomNavSubItems
-                }
-              >
-                {subMenu.menuList[4].map((subMenuItem, index) => (
-                  <a key={40 + index}>{subMenuItem.name}</a>
-                ))}
+                채용공고
+                <a onClick={() => setActiveMainMenu(MainMenu.BBS)} />
               </div>
             </div>
           </div>
