@@ -21,3 +21,8 @@ export const bbsEscape = pipe(
   replaceAll('>', '&gt;'),
   replaceAll('<', '&lt;')
 );
+
+export const dateFormat = (dateString: string) => {
+  const date: Date = new Date(dateString);
+  return date.getFullYear().toString() + '.' + (date.getMonth() + 1).toString() + '.' + date.getDate().toString();
+};

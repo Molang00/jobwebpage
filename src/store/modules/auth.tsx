@@ -1,6 +1,6 @@
 import { set, lensProp, pipe } from 'ramda';
 import { AnyAction } from 'redux';
-import { LoginForm, UserSchema, SignUpForm } from '@postech-ses/ses-core';
+import { LoginForm, UserSchema, SignUpForm } from '@postech-ses/job-core';
 
 export enum AuthActionTypes {
   START_SIGNUP = 'auth/START_SIGNUP',

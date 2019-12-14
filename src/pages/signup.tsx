@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { authActions } from '../store/modules/auth';
-import { CompanyDirectorInfoSchema } from '@postech-ses/ses-core/dist/schema';
+import { CompanyDirectorInfoSchema } from '@postech-ses/job-core';
 
 import styles from '../styles/pages/login.module.scss';
 import commonStyles from '../styles/common.module.scss';

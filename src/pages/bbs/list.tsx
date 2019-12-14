@@ -4,20 +4,21 @@ import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
 import { addIndex, map } from 'ramda';
 import { encode } from 'querystring';
-import { JobBoardSearchType, JobBoardPostSchema, JobBoardSearchQuery, JobBoardPostType } from '@postech-ses/ses-core';
+import { BoardSearchType, BoardPostSchema, BoardSearchQuery } from '@postech-ses/job-core';
 import { RootState } from '../../store/store';
 import { REACT_APP_API_URL } from '../../config';
 import SearchBar from '../../components/bbs/SearchBar';
 import Pagination from '../../components/bbs/Pagination';
 import Main from '../../components/layout/Main';
+import { dateFormat } from '../../utils/bbs.util';
 import style from '../../styles/pages/bbs/list.module.scss';
 
-const searchTypeToPathString = (type: JobBoardSearchType) => {
-  if (type === JobBoardSearchType.TITLE_AND_CONTENT) {
+const searchTypeToPathString = (type: BoardSearchType) => {
+  if (type === BoardSearchType.TITLE_AND_CONTENT) {
     return 'title-and-content';
-  } else if (type === JobBoardSearchType.TITLE) {
+  } else if (type === BoardSearchType.TITLE) {
     return 'title';
-  } else if (type === JobBoardSearchType.CONTENT) {
+  } else if (type === BoardSearchType.CONTENT) {
     return 'content';
   } else {
     return 'title-and-content';
@@ -26,9 +27,9 @@ const searchTypeToPathString = (type: JobBoardSearchType) => {
 
 const ListPage = () => {
   const PAGE_SIZE = 10;
-  const [searchType, setSearchType] = React.useState<JobBoardSearchType>(JobBoardSearchType.TITLE_AND_CONTENT);
+  const [searchType, setSearchType] = React.useState<BoardSearchType>(BoardSearchType.TITLE_AND_CONTENT);
   const [searchWord, setSearchWord] = React.useState<string>('');
-  const [currentPage, setCurrentPage] = React.useState<JobBoardPostSchema[]>([]);
+  const [currentPage, setCurrentPage] = React.useState<BoardPostSchema[]>([]);
   const [currentPageNumber, setCurrentPageNumber] = React.useState<number>(0);
   const [lastPageNumber, setLastPageNumber] = React.useState<number>(0);
 
@@ -41,17 +42,15 @@ const ListPage = () => {
   }, [location]);
 
   const search = async () => {
-    const postType = JobBoardPostType.fromPathString(location.pathname.split('/')[2]);
-    const pathPageNumber = parseInt(location.pathname.split('/')[4], 10) - 1;
-    const pathSearchType = location.pathname.split('/')[5]
-      ? JobBoardSearchType.fromPathString(location.pathname.split('/')[5])
-      : JobBoardSearchType.TITLE_AND_CONTENT;
-    const pathSearchWord = location.pathname.split('/')[6] ? location.pathname.split('/')[6] : '';
+    const pathPageNumber = parseInt(location.pathname.split('/')[3], 10) - 1;
+    const pathSearchType = location.pathname.split('/')[4]
+      ? BoardSearchType.fromPathString(location.pathname.split('/')[4])
+      : BoardSearchType.TITLE_AND_CONTENT;
+    const pathSearchWord = location.pathname.split('/')[5] ? location.pathname.split('/')[5] : '';
     setCurrentPageNumber(pathPageNumber);
     setSearchType(pathSearchType);
     setSearchWord(pathSearchWord);
-    const query: JobBoardSearchQuery = {
-      postType,
+    const query: BoardSearchQuery = {
       page: pathPageNumber,
       size: PAGE_SIZE,
       searchType: pathSearchType,
@@ -59,7 +58,7 @@ const ListPage = () => {
     };
     window.scrollTo(0, 0);
     await axios
-      .get(`${REACT_APP_API_URL}/job-board-post/search?${encode(query)}`)
+      .get(`${REACT_APP_API_URL}/board-post/search?${encode(query)}`)
       .then(res => {
         const { count } = res.data;
         setLastPageNumber(count === 0 ? 0 : Math.floor((count - 1) / PAGE_SIZE));
@@ -70,54 +69,35 @@ const ListPage = () => {
       });
   };
 
-  const searchView = (id: number) => {
-    axios
-      .get(`${REACT_APP_API_URL}/job-board-post/${id}`)
-      .then(res => {})
-      .catch(() => {
-        alert('데이터를 읽어오는데 실패하였습니다.');
-      })
-      .finally(() => {
-        history.push(`/bbs/${location.pathname.split('/')[2]}/view/${id}`);
-      });
-  };
-
   const pushRouter = (page: number) => {
-    history.push(
-      `/bbs/${location.pathname.split('/')[2]}/list/${page + 1}/${searchTypeToPathString(searchType)}/${searchWord}`
-    );
+    history.push(`/bbs/list/${page + 1}/${searchTypeToPathString(searchType)}/${searchWord}`);
   };
 
-  const dateFormat = (dateString: string) => {
-    const date: Date = new Date(dateString);
-    return date.getFullYear().toString() + '.' + (date.getMonth() + 1).toString() + '.' + date.getDate().toString();
-  };
+  const renderTableRow = (page: BoardPostSchema[]) => (
+    mappingFunction: (bulletin: BoardPostSchema, index: number) => JSX.Element
+  ) => addIndex<BoardPostSchema, JSX.Element>(map)(mappingFunction)(page);
 
-  const renderTableRow = (page: JobBoardPostSchema[]) => (
-    mappingFunction: (bulletin: JobBoardPostSchema, index: number) => JSX.Element
-  ) => addIndex<JobBoardPostSchema, JSX.Element>(map)(mappingFunction)(page);
-
-  const renderPcTableRow = (post: JobBoardPostSchema, index: number) => (
+  const renderPcTableRow = (post: BoardPostSchema, index: number) => (
     <React.Fragment key={index}>
       <tr
         onClick={() => {
-          searchView(post.id);
+          history.push(`/bbs/view/${post.id}`);
         }}
       >
         <td>{post.id}</td>
         <td>{post.title}</td>
-        <td>{post.creatorId}</td>
+        <td>{post.creator.name}</td>
         <td>{dateFormat(post.createdAt)}</td>
         <td>{post.readCount}</td>
       </tr>
     </React.Fragment>
   );
 
-  const renderMobileTableRow = (post: JobBoardPostSchema, index: number) => (
+  const renderMobileTableRow = (post: BoardPostSchema, index: number) => (
     <React.Fragment key={index}>
       <li
         onClick={() => {
-          searchView(post.id);
+          history.push(`/bbs/view/${post.id}`);
         }}
       >
         <div>
@@ -150,7 +130,7 @@ const ListPage = () => {
                 if (!userInfo) {
                   history.push('/login');
                 } else {
-                  history.push(`/bbs/${location.pathname.split('/')[2]}/write/new`);
+                  history.push(`/bbs/write/new`);
                 }
               }}
             >

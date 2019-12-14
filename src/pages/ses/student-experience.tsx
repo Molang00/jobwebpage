@@ -3,10 +3,8 @@ import Axios from 'axios';
 import { encode } from 'querystring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
-import { getElapsedYears, StudentExperienceSchema } from '@postech-ses/ses-core';
-
+import { getElapsedYears, StudentExperienceSchema } from '@postech-ses/job-core';
 import { REACT_APP_API_URL, REACT_APP_FILE_DOWNLOAD_URL } from '../../config';
-
 import commonStyles from '../../styles/common.module.scss';
 import Main from '../../components/layout/Main';
 import Dropdown from '../../components/Dropdown';
