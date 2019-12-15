@@ -1,19 +1,21 @@
+import axios from 'axios';
 import React from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { REACT_APP_API_URL } from '../config';
+import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-import { authActions } from '../store/modules/auth';
-import { CompanyDirectorInfoSchema } from '@postech-ses/job-core';
 
 import styles from '../styles/pages/login.module.scss';
 import commonStyles from '../styles/common.module.scss';
+import { SignUpForm } from '@postech-ses/job-core';
 
-const SignUpForm: React.FC = () => {
+const SignupForm: React.FC = () => {
   const [name, setName] = React.useState('');
   const [director, setDirector] = React.useState('');
   const [directorTitle, setDirectorTitle] = React.useState('');
   const [directorDepartment, setDirectorDepartment] = React.useState('');
   const [directorEmail, setDirectorEmail] = React.useState('');
+  const [directorPage, setDirectorPage] = React.useState('');
   const [directorPhone, setDirectorPhone] = React.useState('');
   const [directorCellPhone, setDirectorCellPhone] = React.useState('');
   const [id, setId] = React.useState('');
@@ -21,17 +23,8 @@ const SignUpForm: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [checkbox, setCheckbox] = React.useState(false);
   const [collapse, setCollapse] = React.useState(true);
-  const [directorInfo, setDirectorInfo] = React.useState<CompanyDirectorInfoSchema>({
-    name: '',
-    title: '',
-    department: '',
-    email: '',
-    phone: '',
-    cellPhone: ''
-  });
 
   const { isLogin } = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
 
   const history = useHistory();
 
@@ -55,6 +48,9 @@ const SignUpForm: React.FC = () => {
     if (directorEmail === '') {
       return alert('이메일을 입력해주세요.');
     }
+    if (directorPage === '') {
+      return alert('홈페이지를 입력해주세요.');
+    }
     if (directorPhone === '') {
       return alert('사무실전화를 입력해주세요.');
     }
@@ -70,22 +66,35 @@ const SignUpForm: React.FC = () => {
     if (checkbox === false) {
       return alert('개인정보 처리방침에 동의해주세요.');
     }
-    setDirectorInfo({
+    const directorInfo = {
       name: director,
       title: directorTitle,
       department: directorDepartment,
       email: directorEmail,
       phone: directorPhone,
+      homepage: directorPage,
       cellPhone: directorCellPhone
-    });
-    dispatch(
-      authActions.startSignup({
-        id,
-        password,
-        name,
-        directorInfo
+    };
+    const form: SignUpForm = {
+      id,
+      password,
+      name,
+      directorInfo
+    };
+    axios
+      .post(`${REACT_APP_API_URL}/auth/sign-up`, form)
+      .then(response => {
+        const status: number = response.status;
+        if (status == 201) {
+          alert('회원가입에 성공하였습니다.\n관리자의 승인이 필요합니다.');
+          history.push('/');
+        } else {
+          alert('회원가입에 실패하였습니다.');
+        }
       })
-    );
+      .catch(error => {
+        throw error;
+      });
   };
 
   const onKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -120,6 +129,10 @@ const SignUpForm: React.FC = () => {
             <b>이메일 *</b>
           </label>
           <input type="text" name="directorEmail" onChange={event => setDirectorEmail(event.currentTarget.value)} />
+          <label>
+            <b>홈페이지 *</b>
+          </label>
+          <input type="text" name="directorPage" onChange={event => setDirectorPage(event.currentTarget.value)} />
           <label>
             <b>사무실전화 *</b>
           </label>
@@ -192,7 +205,7 @@ const SignUpPage = () => {
           </h1>
         </div>
         <div className="p-col-12">
-          <SignUpForm />
+          <SignupForm />
         </div>
       </div>
     </div>
