@@ -6,7 +6,8 @@ import { mainMenuActions, MainMenu } from '../store/modules/mainMenu';
 import { subMenuActions, JobInfo, Course, GetJob, SES, BBS, SubMenu, Default } from '../store/modules/subMenu';
 
 const LoginPage = loadable(() => import(/* webpackChunkName: "LoginPage" */ '../pages/login'));
-const SignUpPage = loadable(() => import(/* webpackChunkName: "Home" */ '../pages/signup'));
+const SignUpPage = loadable(() => import(/* webpackChunkName: "SignUpPage" */ '../pages/signup'));
+const ApproveManagePage = loadable(() => import(/* webpackChunkName: "ApproveManagePage" */ '../pages/approveManage'));
 
 const GreetingPage = loadable(() => import(/* webpackChunkName: "GreetingPage" */ '../pages/jobInfo/greetings'));
 const OrganizationPage = loadable(() =>
@@ -53,6 +54,13 @@ const Routes = () => {
         render={() => {
           setMenu(MainMenu.DEFAULT, Default.LOGIN);
           return <SignUpPage />;
+        }}
+      />
+      <Route
+        path="/approveManage"
+        render={() => {
+          setMenu(MainMenu.DEFAULT, Default.LOGIN);
+          return <ApproveManagePage />;
         }}
       />
       <Route

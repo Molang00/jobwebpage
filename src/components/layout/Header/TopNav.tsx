@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { UserSchema, Maybe } from '@postech-ses/job-core';
+import { UserSchema, Maybe, UserRole } from '@postech-ses/job-core';
 
 import styles from '../../../styles/components/Layout/Header.module.scss';
 
@@ -22,6 +22,13 @@ const TopNav: React.FC<Props> = ({ isLogin, userInfo, logout }) => {
             <a className={styles.TopNavButton} onClick={logout}>
               로그아웃
             </a>
+            {Maybe.fromNullable(userInfo)
+              .map(user => user.role)
+              .getOrElse(UserRole.COMPANY) == UserRole.ADMIN ? (
+              <Link to="/approveManage" className={styles.TopNavButton}>
+                승인관리
+              </Link>
+            ) : null}
 
             <a>
               <FontAwesomeIcon icon={faUser} />{' '}

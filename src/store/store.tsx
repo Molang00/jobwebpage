@@ -3,7 +3,7 @@ import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import auth, { initialAuthState } from './modules/auth';
 import mainMenu, { MainMenuState, initialMainMenuState } from './modules/mainMenu';
 import subMenu, { SubMenuState, initialSubMenuState } from './modules/subMenu';
-import { loginEpic, logoutEpic, signupEpic } from '../epics/authEpic';
+import { loginEpic, logoutEpic } from '../epics/authEpic';
 import { AuthState } from './modules/auth';
 
 export interface RootState {
@@ -24,7 +24,7 @@ const initialRootState = {
   auth: initialAuthState
 };
 
-const rootEpic = combineEpics(loginEpic, logoutEpic, signupEpic);
+const rootEpic = combineEpics(loginEpic, logoutEpic);
 const epicMiddleware = createEpicMiddleware();
 
 const store = createStore(rootReducer, initialRootState, applyMiddleware(epicMiddleware));
