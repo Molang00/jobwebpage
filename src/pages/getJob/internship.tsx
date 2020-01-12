@@ -29,12 +29,14 @@ const InternshipPage: React.FC = () => {
                 <tr>
                   <th rowSpan={2}>프로그램</th>
                   <th rowSpan={2}>내용</th>
-                  <th colSpan={3}>참여인원</th>
+                  <th colSpan={5}>참여인원</th>
                 </tr>
                 <tr>
                   <td>2015</td>
                   <td>2016</td>
                   <td>2017</td>
+                  <td>2018</td>
+                  <td>2019</td>
                 </tr>
                 <tr>
                   <td>SES</td>
@@ -47,8 +49,10 @@ const InternshipPage: React.FC = () => {
                     2017년 116개 기관)
                   </td>
                   <td />
-                  <td>260</td>
+                  <td>252</td>
                   <td>297</td>
+                  <td>272</td>
+                  <td>287</td>
                 </tr>
                 <tr>
                   <td>POVI</td>
@@ -59,6 +63,8 @@ const InternshipPage: React.FC = () => {
                   <td>16</td>
                   <td>16</td>
                   <td>18</td>
+                  <td>11</td>
+                  <td>1</td>
                 </tr>
                 <tr>
                   <td>CUop</td>
@@ -70,49 +76,48 @@ const InternshipPage: React.FC = () => {
                   <td />
                   <td />
                   <td>26</td>
+                  <td>29</td>
+                  <td>30</td>
                 </tr>
                 <tr>
                   <td>
-                    기업가센터
+                    기업가정신센터
                     <br />
-                    해외인턴십
+                    해외인턴
                   </td>
                   <td>– 포스텍 동문들이 실리콘밸리에 창업 또는 근무하고 있는 회사에서 인턴 수행</td>
                   <td />
                   <td>2</td>
+                  <td>2</td>
                   <td>1</td>
-                </tr>
-                <tr>
-                  <td>
-                    공학한림원
-                    <br />
-                    현장실습
-                  </td>
-                  <td>– 한국공학한림원 주관 기업 현장실습 프로 그램 (하·동계)</td>
-                  <td />
-                  <td />
-                  <td>1</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>개별인턴</td>
                   <td>– 학생이 기업의 인턴 공모에 직접 지원</td>
                   <td>24</td>
-                  <td>8</td>
-                  <td>30</td>
+                  <td></td>
+                  <td>14</td>
+                  <td>38</td>
+                  <td>81</td>
                 </tr>
                 <tr>
                   <td>계</td>
-                  <td />
                   <td>40</td>
-                  <td>286</td>
-                  <td>373</td>
+                  <td></td>
+                  <td>271</td>
+                  <td>357</td>
+                  <td>351</td>
+                  <td>399</td>
                 </tr>
                 <tr>
                   <td>참여율</td>
                   <td>재학생 대비 참여학생 비율 (%)</td>
                   <td>2.8</td>
-                  <td>19.4</td>
-                  <td>25.7</td>
+                  <td>18.9</td>
+                  <td>24.9</td>
+                  <td>24.7</td>
+                  <td>28.1</td>
                 </tr>
               </tbody>
             </table>

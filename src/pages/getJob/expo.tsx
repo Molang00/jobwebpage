@@ -49,34 +49,39 @@ const ExpoPage: React.FC = () => {
                     <th>2016</th>
                     <th>2017</th>
                     <th>2018</th>
+                    <th>2019</th>
                   </tr>
                   <tr>
                     <td>개최시기</td>
                     <td>2-3월 / 8월</td>
                     <td>2-3월 / 8월</td>
                     <td>3월 / 9월</td>
-                    <td>3월</td>
+                    <td>3월 / 9월</td>
+                    <td>2월 / 9월</td>
                   </tr>
                   <tr>
                     <td>개최일수</td>
                     <td>9일 / 8일</td>
                     <td>7일 / 7일</td>
                     <td>6일 / 3일</td>
-                    <td>4일</td>
+                    <td>4일 / 4일</td>
+                    <td>4일 / 3일</td>
                   </tr>
                   <tr>
                     <td>참가기업수</td>
                     <td>16개 / 11개</td>
                     <td>17개 / 13개</td>
                     <td>12개 / 42개</td>
-                    <td>53개</td>
+                    <td>53개 / 50개</td>
+                    <td>50개 / 49개</td>
                   </tr>
                   <tr>
                     <td>참가자수 (연인원)</td>
                     <td>350명</td>
                     <td>300명</td>
                     <td>3,600명</td>
-                    <td>진행중</td>
+                    <td>3,600명</td>
+                    <td>3,600명</td>
                   </tr>
                 </tbody>
               </table>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../../components/layout/Main';
 import commonStyles from '../../styles/common.module.scss';
-import roleImg from '../../images/role.jpg';
+import roleImg from '../../images/role.png';
 
 const GreetingPage: React.FC = () => {
   return (
