@@ -64,22 +64,6 @@ const GuidePage: React.FC = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>RND JOB (알앤디잡)</td>
-                  <td>
-                    과학기술정보통신부/
-                    <br /> 한국산업기술진흥협회
-                  </td>
-                  <td>
-                    이공계인력중계센터
-                    <br /> 구인/구직정보, 채용박람회, 직무적성검사
-                  </td>
-                  <td>
-                    <a href="https://www.mdjob.or.kr/">
-                      <FontAwesomeIcon icon={faLink} />
-                    </a>
-                  </td>
-                </tr>
-                <tr>
                   <td>JOB-ALIO (잡알리오)</td>
                   <td>기획재정부</td>
                   <td>
@@ -255,16 +239,6 @@ const GuidePage: React.FC = () => {
                   <td>온라인 창업교육, 창업지원 포털사이트</td>
                   <td>
                     <a href="http://www.k-startup.go.kr/">
-                      <FontAwesomeIcon icon={faLink} />
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>큐넷</td>
-                  <td>한국산업인력공단</td>
-                  <td>국가자격, 민간자격, 외국자격 등 자격포털</td>
-                  <td>
-                    <a href="http://www.q-net.go.kr/">
                       <FontAwesomeIcon icon={faLink} />
                     </a>
                   </td>
